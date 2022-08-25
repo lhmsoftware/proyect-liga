@@ -22,7 +22,10 @@ use App\Entity\Person;
 
 class ClubController extends AbstractController
 {
-   const ERR_GENERIC_BUDGET ="Error en el presupuesto";    
+   const ERR_BUDGET_NULL="Error presupuesto con valor cero";   
+   const ERR_MISSING_DATA="Error datos de entrada";
+   const ERR_BUDGET_LITTLE ="Error presupuesto menor que gastos"; 
+   const OK_CODE= true;
     
     //Internal vars
     private $code;
@@ -79,7 +82,7 @@ class ClubController extends AbstractController
                 $this->error = false;  
                     
             }else{
-                throw new Exception(self::ERR_GENERIC_BUDGET); 
+                throw new Exception(self::ERR_BUDGET_NULL); 
             }        
             
         }catch (ValidationException $ex) {
@@ -132,22 +135,36 @@ class ClubController extends AbstractController
             $total=$em->getRepository(Person::class)->sumSalary($club_id);   //suma de todos los salarios del club     
             $total_salary =  $total[0]['total'];
           
-            $budget = $data_club['budget'];
-            
-            if($budget > 0 && $budget > $total_salary){              
-                                       
-                $club = $em->getRepository(Club::class)->find($club_id);
-                $club->setBudget($budget);   
-                $em->persist($club);
-                $em->flush();
+            if(isset($data_club['budget'])){  
+                
+                $budget = $data_club['budget'];
+                
+                if($budget>0){                    
+                
+                    if($budget > $total_salary){              
+                    
+                    $club = $em->getRepository(Club::class)->find($club_id);
+                    $club->setBudget($budget);   
+                    $em->persist($club);
+                    $em->flush();
 
-                $this->code = Response::HTTP_OK;
-                $this->data = true;
-                $this->error = false;
+                    $this->code = Response::HTTP_OK;
+                    $this->data = true;
+                    $this->error = false;
+                    
+                    }else{
+                        
+                        throw new Exception(self::ERR_BUDGET_LITTLE); 
+                    }
+
+                }else {
+
+                    throw new Exception(self::ERR_BUDGET_NULL); 
+                }                
                 
-            }else {
+            }else{
                 
-                throw new Exception(self::ERR_GENERIC_BUDGET); 
+                throw new Exception(self::ERR_MISSING_DATA);
             }
             
         }catch (ValidationException $ex) {

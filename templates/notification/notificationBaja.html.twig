@@ -1,0 +1,29 @@
+{% extends 'baseNotification.html.twig' %}
+
+{% block title %}Baja de {{ type_person }} {% endblock %}
+
+{% block body %} 
+    <br> 
+    <div class="head"> Estimado Sr/a: {{name_person}} </div>
+    <p>Lamentamos su retirada y le agradecemos por el tiempo dedicado a nuestro club.</p>
+    <p>Dado que ya hemos completado correctamente el proceso de baja, pasamos a la indicación de los siguientes pasos: </p>
+
+    <ol>
+        <li>Realizar la entrega corresponiente.</li>      
+        <li>Entregar medios básicos del club.</li>
+        <li>Darse de baja sistema de acceso a las instalaciones.</li>
+    </ol>
+
+    <br>           
+    <p>Reciba un cordial saludo</p>    
+    <p>Director: {{ name_manager }}</p>
+    <p>Club:{{ name_club }}
+
+{%endblock%}  
+  
+
+
+
+
+
+

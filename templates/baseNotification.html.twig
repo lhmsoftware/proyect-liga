@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <title>{% block title %}{% endblock %}</title>    
+        {% block style %}   
+        {% endblock %}
+    </head>
+
+    <body>        
+        {% block header %}
+            <header> 
+                <div class="banner">                    
+                    <p class="dir">Calle Prueba,15</p>      
+                    <p class="dir2"> Madrid.</p>  
+                    <p class="dir2">(+34) 911 111 111</p> 
+                    <p class="dir2">La Liga Tech</p>
+                </div>   
+            </header>  
+        {% endblock %}        
+        <div class="content"> 
+            <br>
+             
+            <p class="subtitle">{% block subtitle %}{% endblock %}</p>  
+            {% block body %} {%endblock%}
+            <p class='end'></p>
+        </div>
+        <div class="footer">
+            <p> La Liga Tech S.A</p>
+        </div>        
+    </body>
+
+</html>

@@ -1,0 +1,11 @@
+app:
+    errors:
+        person:
+            not_exist: 'No existe la persona en BD'
+            request: 'Error en la consulta BD'
+        club:
+            not_exist: 'No existe el club BD'
+            request:
+        salary:
+            generic: 'Error de salario'
+    

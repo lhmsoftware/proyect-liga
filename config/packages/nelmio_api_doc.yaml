@@ -1,0 +1,12 @@
+nelmio_api_doc:
+    documentation:
+        info:
+            title: REST API LIGA
+            description: The LIGA Business Data REST API
+            version: 1.0.0      
+            
+    areas: # to filter documented areas
+        path_patterns:
+            - ^/api(?!/doc$)
+        host_patterns: # document only routes with a host of the form api.*
+            - ^api\.    

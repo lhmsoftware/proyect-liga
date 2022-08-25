@@ -1,0 +1,27 @@
+{% extends 'baseNotification.html.twig' %}
+
+{% block title %}Contratación de {{ type_person }} {% endblock %}
+
+{% block body %}     
+    <br> 
+    <div class="head"> Estimado Sr/a: {{name_person}} </div>
+    <p>Le damos la Bienvenida y le agradecemos por pertenecer a nuestro club.</p>
+    <p>Dado que ya hemos completado correctamente el proceso de alta, pasamos a la indicación de los siguientes pasos: </p>
+
+    <ol>
+        <li>Conocer las instalaciones de nuestro club - {{ name_club }}.</li>      
+        <li>Presentación oficial.</li>
+        <li>Fista de bienvenida.</li>
+    </ol>
+
+    <br>           
+    <p>Reciba un cordial saludo</p> 
+    <p>Director: {{ name_manager }}</p>
+
+{%endblock%}      
+
+
+
+
+
+
